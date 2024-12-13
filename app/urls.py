@@ -13,5 +13,6 @@ urlpatterns = [
     path('api/v1/', include('atores.urls')),
     path('api/v1/', include('filmes.urls')),
     path('api/v1/', include('avaliacoes.urls')),
+    path('api/v1/', include('authentication.urls')),
       
 ]
