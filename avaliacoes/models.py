@@ -11,11 +11,11 @@ class Avaliacao(models.Model):
     )
     estrelas = models.IntegerField(
         validators=[
-            MinValueValidator(0,'Minimo 0 estrelas'),
-            MaxValueValidator(5,'Maximo 5 estrelas'),
+            MinValueValidator(0, 'Minimo 0 estrelas'),
+            MaxValueValidator(5, 'Maximo 5 estrelas'),
         ]
     )
     comentario = models.TextField(null=True, blank=True)
-    
+
     def __str__(self):
         return self.filme.titulo

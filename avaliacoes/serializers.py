@@ -3,7 +3,7 @@ from avaliacoes.models import Avaliacao
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = Avaliacao
-        fields = '__all__' 
+        fields = '__all__'
