@@ -3,7 +3,7 @@ from rest_framework import generics, views, response, status
 from rest_framework.permissions import IsAuthenticated
 from app.permissions import GlobalDefaultPermissions
 from filmes.models import Filme
-from filmes.serializers import FilmeSerializer
+from filmes.serializers import FilmeSerializer, FilmeListSerializer
 from avaliacoes.models import Avaliacao
 
 
@@ -12,11 +12,20 @@ class FilmeCreateListView(generics.ListCreateAPIView):
     queryset = Filme.objects.all()
     serializer_class = FilmeSerializer
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return FilmeListSerializer
+        return FilmeSerializer
+
 
 class FilmeRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermissions,)
     queryset = Filme.objects.all()
-    serializer_class = FilmeSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return FilmeListSerializer
+        return FilmeSerializer
 
 
 class MovieStatsView(views.APIView):
