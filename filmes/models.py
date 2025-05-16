@@ -1,14 +1,15 @@
 from django.db import models
-from generos.models import Genero
+
 from atores.models import Ator
+from generos.models import Genero
 
 
 class Filme(models.Model):
     titulo = models.CharField(max_length=500)
     genero = models.ForeignKey(
         Genero,
-        on_delete=models.PROTECT, # chave estrangeira protegida contra exclusão acidental
-        related_name='filmes' # nome do relacionamento
+        on_delete=models.PROTECT,  # chave estrangeira protegida contra exclusão acidental
+        related_name='filmes',  # nome do relacionamento
     )
     ano_lancamento = models.IntegerField(blank=True, null=True)
     atores = models.ManyToManyField(Ator, related_name='filmes')

@@ -17,10 +17,37 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Avaliação',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('estrelas', models.IntegerField(validators=[django.core.validators.MinValueValidator(0, 'Minimo 0 estrelas'), django.core.validators.MaxValueValidator(5, 'Maximo 5 estrelas')])),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'estrelas',
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(
+                                0, 'Minimo 0 estrelas'
+                            ),
+                            django.core.validators.MaxValueValidator(
+                                5, 'Maximo 5 estrelas'
+                            ),
+                        ]
+                    ),
+                ),
                 ('comentario', models.TextField(blank=True, null=True)),
-                ('filme', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='reviews', to='filmes.filme')),
+                (
+                    'filme',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name='reviews',
+                        to='filmes.filme',
+                    ),
+                ),
             ],
         ),
     ]

@@ -1,13 +1,12 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+
 from filmes.models import Filme
 
 
 class Avaliacao(models.Model):
     filme = models.ForeignKey(
-        Filme,
-        on_delete=models.PROTECT,
-        related_name='reviews'
+        Filme, on_delete=models.PROTECT, related_name='reviews'
     )
     estrelas = models.IntegerField(
         validators=[

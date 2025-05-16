@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # constante para dar opções de itens para selecionar no campo nacionalidade
 NAC_CHOICES = (
     ('USA', 'Estados Unidos'),
@@ -13,7 +12,7 @@ class Ator(models.Model):
     nascimento = models.DateField(blank=True, null=True)
     nacionalidade = models.CharField(
         max_length=100,
-        choices=NAC_CHOICES, # campo choice abre uma lista de opções para selecionar
+        choices=NAC_CHOICES,  # campo choice abre uma lista de opções para selecionar
         blank=True,
         null=True,
     )
